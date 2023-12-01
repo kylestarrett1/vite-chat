@@ -28,10 +28,12 @@ export default {
         'bg-light': '#525974',
         'bg-dark': '#262b3d',
         fg: '#191c28',
+        'text-light': '#eeeef1',
+        neon: '#ab20fd',
       },
-
       boxShadow: {
         '3xl': '0 35px 60px -15px rgba(0, 0, 0, 0.9)',
+        neon: '0 0 7px 0 rgba(172, 33, 253, 0.6)',
       },
     },
   },
