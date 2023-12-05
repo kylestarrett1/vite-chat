@@ -1,0 +1,44 @@
+// Duration.
+$duration: (
+  bg: 45s,
+  wrapper: 3s,
+  overlay: 1.5s,
+  header: 1s,
+  nav-icons: 0.5s,
+  clipboard: 4s,
+);
+
+// Size.
+$size: (
+  nav-icon-wrapper: 5.35em,
+  nav-icon: 1.75em,
+);
+
+// Height.
+$height: (
+  sidebar-header-height: 10rem,
+  sidebar-footer-height: 23rem,
+);
+
+// Font.
+$font: ();
+
+// Palette.
+$palette: (
+  bg-primary: #f1f5f9,
+  bg-secondary: #0b1a2c,
+
+  fg: #fff,
+
+  text-primary: #7d84ab,
+  text-secondary: #dee2ec,
+  text-grey-1: #282828,
+
+  border-color: rgba(#535d7d, 0.3),
+  nav-icon: (
+    hover-bg: rgba(255, 255, 255, 0.175),
+    hover-fg: #fff,
+    active-bg: rgba(255, 255, 255, 0.35),
+    active-fg: #fff,
+  ),
+);

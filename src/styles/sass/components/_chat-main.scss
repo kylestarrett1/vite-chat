@@ -1,0 +1,38 @@
+.chat-main__wrapper {
+  flex: 0 0 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 6rem;
+
+  .chat-compose {
+    width: 100%;
+  }
+
+  .chat-compose form {
+    display: flex;
+    position: relative;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+  }
+
+  .chat-compose label {
+    display: inline-flex;
+    margin-right: 0.5rem;
+    flex-grow: 0;
+  }
+
+  .chat-compose input {
+    font-size: 12pt;
+    width: 100%;
+    align-self: flex-start;
+    flex-grow: 1;
+    border-radius: 15px;
+    height: 5rem;
+  }
+
+  .chat-compose input:focus {
+    outline: none;
+  }
+}
