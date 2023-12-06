@@ -1,3 +1,4 @@
+import React, { useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faArrowLeft,
@@ -11,10 +12,20 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { faGem } from '@fortawesome/free-regular-svg-icons';
 
+const items = [];
+
 const Sidebar = () => {
+  const ANIMATION_DURATION = 300;
+
+  const sidebarRef = useRef(null);
+
+  const subMenuEl = useRef(null);
+
+  // const subMenuEls = useRef(new Array());
+
   return (
     <div className="layout has-sidebar fixed-sidebar fixed-header">
-      <aside id="sidebar" className="sidebar break-point-sm">
+      <aside id="sidebar" className="sidebar break-point-sm" ref={sidebarRef}>
         <a id="btn-collapse" className="sidebar-collapser">
           <FontAwesomeIcon className="icon" icon={faArrowLeft} />
         </a>
@@ -33,7 +44,7 @@ const Sidebar = () => {
                   <span> USERNAME </span>
                 </li>
                 <li className="menu-item sub-menu">
-                  <a href="#">
+                  <a href="#" ref={subMenuEl}>
                     <span className="menu-icon">
                       <FontAwesomeIcon className="icon" icon={faGem} />
                     </span>
@@ -55,7 +66,7 @@ const Sidebar = () => {
                         </a>
                       </li>
 
-                      <li className="menu-item sub-menu">
+                      <li className="menu-item sub-menu" ref={subMenuEl}>
                         <a href="#">
                           <span className="menu-title">Forms</span>
                         </a>
@@ -84,7 +95,10 @@ const Sidebar = () => {
                                       <span className="menu-title">Radio</span>
                                     </a>
                                   </li>
-                                  <li className="menu-item sub-menu">
+                                  <li
+                                    className="menu-item sub-menu"
+                                    ref={subMenuEl}
+                                  >
                                     <a href="#">
                                       <span className="menu-title">
                                         Want more ?
@@ -118,7 +132,7 @@ const Sidebar = () => {
                   </div>
                 </li>
 
-                <li className="menu-item sub-menu">
+                <li className="menu-item sub-menu" ref={subMenuEl}>
                   <a href="#">
                     <span className="menu-icon">
                       <FontAwesomeIcon className="icon" icon={faChartColumn} />
@@ -146,7 +160,7 @@ const Sidebar = () => {
                   </div>
                 </li>
 
-                <li className="menu-item sub-menu">
+                <li className="menu-item sub-menu" ref={subMenuEl}>
                   <a href="#">
                     <span className="menu-icon">
                       <FontAwesomeIcon className="icon" icon={faCartShopping} />
@@ -174,7 +188,7 @@ const Sidebar = () => {
                   </div>
                 </li>
 
-                <li className="menu-item sub-menu">
+                <li className="menu-item sub-menu" ref={subMenuEl}>
                   <a href="#">
                     <span className="menu-icon">
                       <FontAwesomeIcon className="icon" icon={faGlobe} />
@@ -197,7 +211,7 @@ const Sidebar = () => {
                   </div>
                 </li>
 
-                <li className="menu-item sub-menu">
+                <li className="menu-item sub-menu" ref={subMenuEl}>
                   <a href="#">
                     <span className="menu-icon">
                       <FontAwesomeIcon className="icon" icon={faPaintRoller} />
@@ -259,7 +273,33 @@ const Sidebar = () => {
 
           <div className="sidebar-footer">
             <div className="footer-box">
-              <div></div>
+              <div>
+                <img
+                  className="react-logo"
+                  src="https://user-images.githubusercontent.com/25878302/213938106-ca8f0485-3f30-4861-9188-2920ed7ab284.png"
+                  alt="react"
+                />
+              </div>
+              <div style={{ paddingTop: '10px' }}>
+                <span style={{ display: 'block', marginBottom: '10px' }}>
+                  Pro sidebar is also available as a react package
+                </span>
+                <div style={{ marginBottom: '15px' }}>
+                  <img
+                    alt="preview badge"
+                    src="https://img.shields.io/github/stars/azouaoui-med/react-pro-sidebar?style=social"
+                  />
+                </div>
+                <div>
+                  <a
+                    href="https://github.com/azouaoui-med/react-pro-sidebar"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    Check it out!
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
