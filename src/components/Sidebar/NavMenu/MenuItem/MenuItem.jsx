@@ -9,32 +9,28 @@ const MenuItem = ({
   badgeColor,
   hasSubMenu,
   outerSubMenuItems,
-  // innerSubMenuItems,
 }) => {
   const [subMenuIsOpen, setSubMenuIsOpen] = useState(false);
   const [innerSubMenuIsOpen, setInnerSubMenuIsOpen] = useState(false);
 
-  const toggleSubMenu = (e) => {
-    e.preventDefault();
-    const subMenu = e.target.nextElementSibling;
-
+  const toggleSubMenu = () => {
     setSubMenuIsOpen(!subMenuIsOpen);
-    subMenu.style.display = subMenuIsOpen ? 'none' : 'block';
   };
 
   const toggleInnerSubMenu = (e) => {
-    e.preventDefault();
-    const subMenu = e.target.nextElementSibling;
-
+    e.stopPropagation();
     setInnerSubMenuIsOpen(!innerSubMenuIsOpen);
-    subMenu.style.display = innerSubMenuIsOpen ? 'none' : 'block';
+  };
+
+  const stopPropagation = (e) => {
+    e.stopPropagation(); // Stop propagation of the click event
   };
 
   return (
     <Fragment>
       {hasSubMenu ? (
-        <li className="menu-item sub-menu">
-          <a href="#" onClick={toggleSubMenu}>
+        <li className="menu-item sub-menu" onClick={toggleSubMenu}>
+          <a href="#">
             <span className="menu-icon">
               <FontAwesomeIcon className="icon" icon={icon} />
             </span>
@@ -46,104 +42,60 @@ const MenuItem = ({
               </span>
             )}
           </a>
-          <div className="sub-menu-list">
-            <ul>
-              {outerSubMenuItems.map((outerItem, outerIndex) =>
-                outerItem.hasSubMenu ? (
-                  <li key={outerIndex} className="menu-item sub-menu">
-                    <a href="#" onClick={toggleInnerSubMenu}>
-                      <span className="menu-title">{outerItem.title}</span>
-                    </a>
-
-                    <div className="sub-menu-list">
-                      <ul>
-                        {outerItem.innerSubMenuItems.map(
-                          (innerItem, innerIndex) => (
-                            <li key={innerIndex} className="menu-item">
-                              <a href="#" onClick={toggleInnerSubMenu}>
-                                <span className="menu-title">
-                                  {innerItem.title}
-                                </span>
-                              </a>
-                            </li>
-                          )
-                        )}
-                      </ul>
-                    </div>
-                  </li>
-                ) : (
-                  <li key={outerIndex} className="menu-item">
-                    <a href="#">
-                      <span className="menu-title">{outerItem.title}</span>
-                    </a>
-                  </li>
-                )
-              )}
-
-              {/* <li className="menu-item">
-                <a href="#">
-                  <span className="menu-title">Grid</span>
-                </a>
-              </li>
-              <li className="menu-item">
-                <a href="#">
-                  <span className="menu-title">Layout</span>
-                </a>
-              </li>
-
-              <li className="menu-item sub-menu">
-                <a href="#">
-                  <span className="menu-title">Forms</span>
-                </a>
-                <div className="sub-menu-list">
-                  <ul>
-                    <li className="menu-item">
+          {subMenuIsOpen && (
+            <div
+              className="sub-menu-list"
+              style={{ display: 'block' }}
+              onClick={stopPropagation}
+            >
+              <ul>
+                {outerSubMenuItems.map((outerItem, outerIndex) =>
+                  outerItem.hasSubMenu ? (
+                    <li
+                      key={outerIndex}
+                      className="menu-item sub-menu"
+                      onClick={toggleInnerSubMenu}
+                    >
                       <a href="#">
-                        <span className="menu-title">Input</span>
+                        <span className="menu-title">{outerItem.title}</span>
                       </a>
-                    </li>
-                    <li className="menu-item">
-                      <a href="#">
-                        <span className="menu-title">More</span>
-                      </a>
-                      <div className="sub-menu-list">
-                        <ul>
-                          <li className="menu-item">
-                            <a href="#">
-                              <span className="menu-title">CheckBox</span>
-                            </a>
-                          </li>
-                          <li className="menu-item">
-                            <a href="#">
-                              <span className="menu-title">Radio</span>
-                            </a>
-                          </li>
-                          <li className="menu-item sub-menu">
-                            <a href="#">
-                              <span className="menu-title">Want more ?</span>
-                              <span className="menu-suffix">&#x1F914;</span>
-                            </a>
-                            <div className="sub-menu-list">
-                              <ul>
-                                <li className="menu-item">
+                      {innerSubMenuIsOpen && (
+                        <div
+                          className="sub-menu-list"
+                          style={{ display: 'block' }}
+                          onClick={stopPropagation}
+                        >
+                          <ul>
+                            {outerItem.innerSubMenuItems.map(
+                              (innerItem, innerIndex) => (
+                                <li
+                                  key={innerIndex}
+                                  className="menu-item"
+                                  onClick={toggleSubMenu}
+                                >
                                   <a href="#">
-                                    <span className="menu-prefix">&#127881;</span>
                                     <span className="menu-title">
-                                      You made it
+                                      {innerItem.title}
                                     </span>
                                   </a>
                                 </li>
-                              </ul>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
+                              )
+                            )}
+                          </ul>
+                        </div>
+                      )}
                     </li>
-                  </ul>
-                </div>
-              </li> */}
-            </ul>
-          </div>
+                  ) : (
+                    <li key={outerIndex} className="menu-item">
+                      <a href="#">
+                        <span className="menu-title">{outerItem.title}</span>
+                      </a>
+                    </li>
+                  )
+                )}
+              </ul>
+            </div>
+          )}
         </li>
       ) : (
         <li className="menu-item">

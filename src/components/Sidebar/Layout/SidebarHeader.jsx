@@ -2,8 +2,8 @@ const SidebarHeader = () => {
   return (
     <div className="sidebar-header">
       <div className="room-logo">
-        <p>R</p>
-        <h5>Room Number</h5>
+        <p>_R</p>
+        <h5>_Room Number</h5>
       </div>
     </div>
   );

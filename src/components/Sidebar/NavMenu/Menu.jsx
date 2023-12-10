@@ -121,7 +121,7 @@ const Menu = () => {
     <Fragment>
       <nav className="menu open-current-submenu">
         <ul>
-          <MenuHeader text="DYNAMICALLY-SET__USERNAME" />
+          <MenuHeader text="_USERNAME" />
 
           <MenuItem
             key={0}
@@ -131,7 +131,6 @@ const Menu = () => {
             badgeColor={componentsMenu.badgeColor}
             hasSubMenu={componentsMenu.hasSubMenu}
             outerSubMenuItems={componentsMenu.outerSubMenuItems}
-            // innerSubMenuItems={componentsMenu.innerSubMenuItems}
           />
 
           <MenuItem
@@ -142,7 +141,6 @@ const Menu = () => {
             badgeColor={chartsMenu.badgeColor}
             hasSubMenu={chartsMenu.hasSubMenu}
             outerSubMenuItems={chartsMenu.outerSubMenuItems}
-            // innerSubMenuItems={chartsMenu.innerSubMenuItems}
           />
 
           <MenuItem
@@ -153,7 +151,6 @@ const Menu = () => {
             badgeColor={eCommerceMenu.badgeColor}
             hasSubMenu={eCommerceMenu.hasSubMenu}
             outerSubMenuItems={eCommerceMenu.outerSubMenuItems}
-            // innerSubMenuItems={eCommerceMenu.innerSubMenuItems}
           />
 
           <MenuItem
@@ -164,7 +161,6 @@ const Menu = () => {
             badgeColor={mapsMenu.badgeColor}
             hasSubMenu={mapsMenu.hasSubMenu}
             outerSubMenuItems={mapsMenu.outerSubMenuItems}
-            // innerSubMenuItems={mapsMenu.innerSubMenuItems}
           />
 
           <MenuItem
@@ -175,10 +171,9 @@ const Menu = () => {
             badgeColor={themeMenu.badgeColor}
             hasSubMenu={themeMenu.hasSubMenu}
             outerSubMenuItems={themeMenu.outerSubMenuItems}
-            // innerSubMenuItems={themeMenu.innerSubMenuItems}
           />
 
-          <MenuHeader text="DYNAMICALLY-SET__EXTRA" />
+          <MenuHeader text="_EXTRA" />
 
           <MenuItem
             key={5}
@@ -188,7 +183,6 @@ const Menu = () => {
             badgeColor={documentationMenu.badgeColor}
             hasSubMenu={documentationMenu.hasSubMenu}
             outerSubMenuItems={documentationMenu.outerSubMenuItems}
-            // innerSubMenuItems={documentationMenu.innerSubMenuItems}
           />
 
           <MenuItem
@@ -199,7 +193,6 @@ const Menu = () => {
             badgeColor={calendarMenu.badgeColor}
             hasSubMenu={calendarMenu.hasSubMenu}
             outerSubMenuItems={calendarMenu.outerSubMenuItems}
-            // innerSubMenuItems={calendarMenu.innerSubMenuItems}
           />
 
           <MenuItem
@@ -210,7 +203,6 @@ const Menu = () => {
             badgeColor={examplesMenu.badgeColor}
             hasSubMenu={examplesMenu.hasSubMenu}
             outerSubMenuItems={examplesMenu.outerSubMenuItems}
-            // innerSubMenuItems={examplesMenu.innerSubMenuItems}
           />
         </ul>
       </nav>

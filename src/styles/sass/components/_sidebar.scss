@@ -1,7 +1,7 @@
 @import '../abstracts/variables';
 
 .layout {
-  flex: 0 0 20%;
+  flex: 0 0 0;
   z-index: 1;
   .header {
     display: flex;
@@ -58,6 +58,7 @@
       display: flex;
       align-items: center;
       padding: 0 2rem;
+      user-select: none;
       > span {
         overflow: hidden;
         white-space: nowrap;
@@ -123,7 +124,7 @@
       .menu-header {
         font-weight: 500;
         padding: 1rem 2.5rem;
-        font-size: 0.8em;
+        font-size: 0.65em;
         letter-spacing: 2px;
         transition: opacity 0.3s;
         opacity: 0.5;
@@ -385,7 +386,7 @@
       display: flex;
       align-items: center;
       gap: 2rem;
-
+      padding: 2rem 0 1rem 0;
       > p {
         width: 5rem;
         min-width: 5rem;
@@ -441,8 +442,8 @@
     .sidebar-collapser {
       transition: left, right, 0.3s;
       position: fixed;
-      left: 26rem;
-      top: 4rem;
+      left: 24rem;
+      top: 3.5rem;
       width: 2rem;
       height: 2rem;
       border-radius: 50%;
@@ -459,6 +460,10 @@
       cursor: pointer;
       color: white;
       box-shadow: 1px 1px 4px _palette(bg-secondary);
+
+      &:first-child {
+        font-size: 0.6em;
+      }
     }
 
     &.collapsed {
