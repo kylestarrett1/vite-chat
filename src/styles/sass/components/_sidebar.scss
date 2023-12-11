@@ -3,6 +3,7 @@
 .layout {
   flex: 0 0 0;
   z-index: 1;
+
   .header {
     display: flex;
     align-items: center;
@@ -443,7 +444,7 @@
       transition: left, right, 0.3s;
       position: fixed;
       left: 24rem;
-      top: 3.5rem;
+      top: 7rem;
       width: 2rem;
       height: 2rem;
       border-radius: 50%;
@@ -522,3 +523,7 @@
     color: #3f4750;
   }
 }
+
+// .layout.has-sidebar.fixed-sidebar.fixed-header {
+//   transition: width 2s;
+// }
