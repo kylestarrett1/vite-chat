@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 
 import SidebarHeader from './Layout/SidebarHeader';
 import SidebarContent from './Layout/SidebarContent';
@@ -8,30 +8,26 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
 const Sidebar = () => {
-  const sidebarRef = useRef(null);
-  const [addCollapsed, setAddCollapsed] = useState('');
+  const [collapsed, setCollapsed] = useState(false);
 
-  const toggleCollapse = (e) => {
-    if (addCollapsed === '') {
-      setAddCollapsed('collapsed');
-      e.target.classList.add('collapsed');
-      sidebarRef.current.style.width = 8 + 'rem';
-    } else {
-      setAddCollapsed('');
-      sidebarRef.current.style.width = 'initial';
-    }
+  const toggleCollapseHandler = () => {
+    setCollapsed(!collapsed);
   };
 
   return (
     <div
-      className="layout has-sidebar fixed-sidebar fixed-header"
-      ref={sidebarRef}
+      className={`layout has-sidebar fixed-sidebar fixed-header ${
+        collapsed ? 'collapsed' : ''
+      }`}
     >
-      <aside id="sidebar" className={`sidebar break-point-sm ${addCollapsed}`}>
+      <aside
+        id="sidebar"
+        className={`sidebar break-point-sm ${collapsed ? 'collapsed' : ''}`}
+      >
         <a
           id="btn-collapse"
           className="sidebar-collapser"
-          onClick={toggleCollapse}
+          onClick={toggleCollapseHandler}
         >
           <FontAwesomeIcon className="icon" icon={faChevronLeft} />
         </a>

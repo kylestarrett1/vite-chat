@@ -443,8 +443,8 @@
     .sidebar-collapser {
       transition: left, right, 0.3s;
       position: fixed;
-      left: 24rem;
-      top: 7rem;
+      left: 260px;
+      top: 78px;
       width: 2rem;
       height: 2rem;
       border-radius: 50%;
@@ -479,7 +479,7 @@
       }
 
       .sidebar-collapser {
-        left: 6rem;
+        left: 60px;
 
         .icon {
           transform: rotate(180deg);
@@ -524,6 +524,11 @@
   }
 }
 
-// .layout.has-sidebar.fixed-sidebar.fixed-header {
-//   transition: width 2s;
-// }
+.sidebar {
+  width: 280px;
+  transition: width 0.3s ease;
+}
+
+.sidebar.collapsed {
+  width: 80px;
+}
