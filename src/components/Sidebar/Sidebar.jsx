@@ -33,7 +33,7 @@ const Sidebar = () => {
         </a>
         <div className="sidebar-layout">
           <SidebarHeader />
-          <SidebarContent />
+          <SidebarContent isCollapsed={collapsed} />
           <SidebarFooter />
         </div>
       </aside>

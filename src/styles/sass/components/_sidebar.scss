@@ -235,14 +235,14 @@
       }
 
       > ul > .sub-menu > .sub-menu-list {
-        background-color: _palette(bg-secondary);
+        background-color: _palette(bg-tertiary);
       }
 
       &.icon-shape-circle,
       &.icon-shape-rounded,
       &.icon-shape-square {
         .menu-item a .menu-icon {
-          background-color: _palette(bg-secondary);
+          background-color: _palette(bg-tertiary);
         }
       }
 
@@ -531,4 +531,12 @@
 
 .sidebar.collapsed {
   width: 80px;
+}
+
+.sub-menu-list.hide {
+  display: none;
+}
+
+.sub-menu-list.show {
+  display: block;
 }

@@ -1,4 +1,5 @@
-import { Fragment, useState } from 'react';
+import { Fragment, useRef, useState, useEffect } from 'react';
+import { slideUp, slideDown } from '../../../Utilities/slideFunctions';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -13,6 +14,8 @@ const MenuItem = ({
   const [subMenuIsOpen, setSubMenuIsOpen] = useState(false);
   const [innerSubMenuIsOpen, setInnerSubMenuIsOpen] = useState(false);
 
+  const subMenuListRef = useRef(null);
+
   const toggleSubMenu = () => {
     setSubMenuIsOpen(!subMenuIsOpen);
   };
@@ -25,6 +28,18 @@ const MenuItem = ({
   const stopPropagation = (e) => {
     e.stopPropagation(); // Stop propagation of the click event
   };
+
+  useEffect(() => {
+    const targetElement = subMenuListRef.current;
+
+    if (targetElement) {
+      if (subMenuIsOpen) {
+        slideDown(targetElement, 300);
+      } else {
+        slideUp(targetElement, 300);
+      }
+    }
+  }, [subMenuIsOpen]);
 
   return (
     <Fragment>
@@ -42,60 +57,54 @@ const MenuItem = ({
               </span>
             )}
           </a>
-          {subMenuIsOpen && (
-            <div
-              className="sub-menu-list"
-              style={{ display: 'block' }}
-              onClick={stopPropagation}
-            >
-              <ul>
-                {outerSubMenuItems.map((outerItem, outerIndex) =>
-                  outerItem.hasSubMenu ? (
-                    <li
-                      key={outerIndex}
-                      className="menu-item sub-menu"
-                      onClick={toggleInnerSubMenu}
-                    >
-                      <a href="#">
-                        <span className="menu-title">{outerItem.title}</span>
-                      </a>
-                      {innerSubMenuIsOpen && (
-                        <div
-                          className="sub-menu-list"
-                          style={{ display: 'block' }}
-                          onClick={stopPropagation}
-                        >
-                          <ul>
-                            {outerItem.innerSubMenuItems.map(
-                              (innerItem, innerIndex) => (
-                                <li
-                                  key={innerIndex}
-                                  className="menu-item"
-                                  onClick={toggleSubMenu}
-                                >
-                                  <a href="#">
-                                    <span className="menu-title">
-                                      {innerItem.title}
-                                    </span>
-                                  </a>
-                                </li>
-                              )
-                            )}
-                          </ul>
-                        </div>
-                      )}
-                    </li>
-                  ) : (
-                    <li key={outerIndex} className="menu-item">
-                      <a href="#">
-                        <span className="menu-title">{outerItem.title}</span>
-                      </a>
-                    </li>
-                  )
-                )}
-              </ul>
-            </div>
-          )}
+          <div
+            className={`sub-menu-list ${subMenuIsOpen ? 'show' : 'hide'}`}
+            ref={subMenuListRef}
+            onClick={stopPropagation}
+          >
+            <ul>
+              {outerSubMenuItems.map((outerItem, outerIndex) =>
+                outerItem.hasSubMenu ? (
+                  <li
+                    key={outerIndex}
+                    className="menu-item sub-menu"
+                    onClick={toggleInnerSubMenu}
+                  >
+                    <a href="#">
+                      <span className="menu-title">{outerItem.title}</span>
+                    </a>
+                    {innerSubMenuIsOpen && (
+                      <div className="sub-menu-list" onClick={stopPropagation}>
+                        <ul>
+                          {outerItem.innerSubMenuItems.map(
+                            (innerItem, innerIndex) => (
+                              <li
+                                key={innerIndex}
+                                className="menu-item"
+                                onClick={toggleSubMenu}
+                              >
+                                <a href="#">
+                                  <span className="menu-title">
+                                    {innerItem.title}
+                                  </span>
+                                </a>
+                              </li>
+                            )
+                          )}
+                        </ul>
+                      </div>
+                    )}
+                  </li>
+                ) : (
+                  <li key={outerIndex} className="menu-item">
+                    <a href="#">
+                      <span className="menu-title">{outerItem.title}</span>
+                    </a>
+                  </li>
+                )
+              )}
+            </ul>
+          </div>
         </li>
       ) : (
         <li className="menu-item">
