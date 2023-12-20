@@ -1,0 +1,111 @@
+import {
+  faCartShopping,
+  faGlobe,
+  faPaintRoller,
+  faBook,
+  faCalendar,
+  faHandshake,
+  faChartColumn,
+} from '@fortawesome/free-solid-svg-icons';
+import { faGem } from '@fortawesome/free-regular-svg-icons';
+
+export default [
+  {
+    id: 0,
+    title: 'Components',
+    icon: faGem,
+    badge: 'Hot',
+    badgeColor: 'primary',
+    hasSubMenu: true,
+    outerSubMenuItems: [
+      { title: 'Grid', hasSubMenu: false },
+      { title: 'Layout', hasSubMenu: false },
+      {
+        title: 'Forms',
+        hasSubMenu: true,
+        innerSubMenuItems: [
+          { title: 'Input', hasSubMenu: false },
+          { title: 'Select', hasSubMenu: false },
+          { title: 'More', hasSubMenu: true },
+        ],
+      },
+    ],
+  },
+  {
+    id: 1,
+    title: 'Charts',
+    icon: faChartColumn,
+    badge: null,
+    badgeColor: null,
+    hasSubMenu: true,
+    outerSubMenuItems: [
+      { title: 'Pie chart', hasSubMenu: false },
+      { title: 'Line chart', hasSubMenu: false },
+      { title: 'Bar chart', hasSubMenu: false },
+    ],
+  },
+  {
+    id: 2,
+    title: 'E-commerce',
+    icon: faCartShopping,
+    badge: null,
+    badgeColor: null,
+    hasSubMenu: true,
+    outerSubMenuItems: [
+      { title: 'Products', hasSubMenu: false },
+      { title: 'Orders', hasSubMenu: false },
+      { title: 'Credit card', hasSubMenu: false },
+    ],
+  },
+  {
+    id: 3,
+    title: 'Maps',
+    icon: faGlobe,
+    badge: null,
+    badgeColor: null,
+    hasSubMenu: true,
+    outerSubMenuItems: [
+      { title: 'Google maps', hasSubMenu: false },
+      { title: 'Open street map', hasSubMenu: false },
+    ],
+  },
+  {
+    id: 4,
+    title: 'Theme',
+    icon: faPaintRoller,
+    badge: null,
+    badgeColor: null,
+    hasSubMenu: true,
+    outerSubMenuItems: [
+      { title: 'Dark', hasSubMenu: false },
+      { title: 'Light', hasSubMenu: false },
+    ],
+  },
+  {
+    id: 5,
+    title: 'Documentation',
+    icon: faBook,
+    badge: 'Beta',
+    badgeColor: 'secondary',
+    hasSubMenu: false,
+    outerSubMenuItems: [],
+  },
+  {
+    id: 6,
+    title: 'Calendar',
+    icon: faCalendar,
+    badge: null,
+    badgeColor: null,
+    hasSubMenu: false,
+    outerSubMenuItems: [],
+  },
+  {
+    id: 7,
+    title: 'Examples',
+    icon: faHandshake,
+    badge: null,
+    badgeColor: null,
+    hasSubMenu: false,
+    outerSubMenuItems: [],
+  },
+];

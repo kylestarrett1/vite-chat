@@ -311,7 +311,8 @@
               width: 20rem;
               margin-left: 3px !important;
               border-radius: 4px;
-              display: block !important;
+              // display: block !important;
+              display: none;
             }
           }
           &.active {

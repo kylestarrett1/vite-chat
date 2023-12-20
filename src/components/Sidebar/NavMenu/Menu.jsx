@@ -1,121 +1,20 @@
-import { Fragment } from 'react';
+import React, { Fragment } from 'react';
 
-import {
-  faCartShopping,
-  faGlobe,
-  faPaintRoller,
-  faBook,
-  faCalendar,
-  faHandshake,
-  faChartColumn,
-} from '@fortawesome/free-solid-svg-icons';
-import { faGem } from '@fortawesome/free-regular-svg-icons';
-
+import MENU_ITEMS from './menuItems';
 import MenuHeader from './MenuHeader';
 import MenuItem from './MenuItem/MenuItem';
 
-const Menu = () => {
-  const menuItems = [
-    {
-      title: 'Components',
-      icon: faGem,
-      badge: 'Hot',
-      badgeColor: 'primary',
-      hasSubMenu: true,
-      outerSubMenuItems: [
-        { title: 'Grid', hasSubMenu: false },
-        { title: 'Layout', hasSubMenu: false },
-        {
-          title: 'Forms',
-          hasSubMenu: true,
-          innerSubMenuItems: [
-            { title: 'Input', hasSubMenu: false },
-            { title: 'Select', hasSubMenu: false },
-            { title: 'More', hasSubMenu: true },
-          ],
-        },
-      ],
-    },
-    {
-      title: 'Charts',
-      icon: faChartColumn,
-      badge: null,
-      badgeColor: null,
-      hasSubMenu: true,
-      outerSubMenuItems: [
-        { title: 'Pie chart', hasSubMenu: false },
-        { title: 'Line chart', hasSubMenu: false },
-        { title: 'Bar chart', hasSubMenu: false },
-      ],
-    },
-    {
-      title: 'E-commerce',
-      icon: faCartShopping,
-      badge: null,
-      badgeColor: null,
-      hasSubMenu: true,
-      outerSubMenuItems: [
-        { title: 'Products', hasSubMenu: false },
-        { title: 'Orders', hasSubMenu: false },
-        { title: 'Credit card', hasSubMenu: false },
-      ],
-    },
-    {
-      title: 'Maps',
-      icon: faGlobe,
-      badge: null,
-      badgeColor: null,
-      hasSubMenu: true,
-      outerSubMenuItems: [
-        { title: 'Google maps', hasSubMenu: false },
-        { title: 'Open street map', hasSubMenu: false },
-      ],
-    },
-    {
-      title: 'Theme',
-      icon: faPaintRoller,
-      badge: null,
-      badgeColor: null,
-      hasSubMenu: true,
-      outerSubMenuItems: [
-        { title: 'Dark', hasSubMenu: false },
-        { title: 'Light', hasSubMenu: false },
-      ],
-    },
-    {
-      title: 'Documentation',
-      icon: faBook,
-      badge: 'Beta',
-      badgeColor: 'secondary',
-      hasSubMenu: false,
-      outerSubMenuItems: [],
-    },
-    {
-      title: 'Calendar',
-      icon: faCalendar,
-      badge: null,
-      badgeColor: null,
-      hasSubMenu: false,
-      outerSubMenuItems: [],
-    },
-    {
-      title: 'Examples',
-      icon: faHandshake,
-      badge: null,
-      badgeColor: null,
-      hasSubMenu: false,
-      outerSubMenuItems: [],
-    },
-  ];
+export const MenuContext = React.createContext();
 
-  const componentsMenu = menuItems[0];
-  const chartsMenu = menuItems[1];
-  const eCommerceMenu = menuItems[2];
-  const mapsMenu = menuItems[3];
-  const themeMenu = menuItems[4];
-  const documentationMenu = menuItems[5];
-  const calendarMenu = menuItems[6];
-  const examplesMenu = menuItems[7];
+export default function Menu() {
+  const componentsMenu = MENU_ITEMS[0];
+  const chartsMenu = MENU_ITEMS[1];
+  const eCommerceMenu = MENU_ITEMS[2];
+  const mapsMenu = MENU_ITEMS[3];
+  const themeMenu = MENU_ITEMS[4];
+  const documentationMenu = MENU_ITEMS[5];
+  const calendarMenu = MENU_ITEMS[6];
+  const examplesMenu = MENU_ITEMS[7];
 
   return (
     <Fragment>
@@ -125,6 +24,7 @@ const Menu = () => {
 
           <MenuItem
             key={0}
+            id={componentsMenu.id}
             title={componentsMenu.title}
             icon={componentsMenu.icon}
             badge={componentsMenu.badge}
@@ -135,6 +35,7 @@ const Menu = () => {
 
           <MenuItem
             key={1}
+            id={chartsMenu.id}
             title={chartsMenu.title}
             icon={chartsMenu.icon}
             badge={chartsMenu.badge}
@@ -145,6 +46,7 @@ const Menu = () => {
 
           <MenuItem
             key={2}
+            id={eCommerceMenu.id}
             title={eCommerceMenu.title}
             icon={eCommerceMenu.icon}
             badge={eCommerceMenu.badge}
@@ -155,6 +57,7 @@ const Menu = () => {
 
           <MenuItem
             key={3}
+            id={mapsMenu.id}
             title={mapsMenu.title}
             icon={mapsMenu.icon}
             badge={mapsMenu.badge}
@@ -165,6 +68,7 @@ const Menu = () => {
 
           <MenuItem
             key={4}
+            id={themeMenu.id}
             title={themeMenu.title}
             icon={themeMenu.icon}
             badge={themeMenu.badge}
@@ -177,6 +81,7 @@ const Menu = () => {
 
           <MenuItem
             key={5}
+            id={documentationMenu.id}
             title={documentationMenu.title}
             icon={documentationMenu.icon}
             badge={documentationMenu.badge}
@@ -187,6 +92,7 @@ const Menu = () => {
 
           <MenuItem
             key={6}
+            id={calendarMenu.id}
             title={calendarMenu.title}
             icon={calendarMenu.icon}
             badge={calendarMenu.badge}
@@ -197,6 +103,7 @@ const Menu = () => {
 
           <MenuItem
             key={7}
+            id={examplesMenu.id}
             title={examplesMenu.title}
             icon={examplesMenu.icon}
             badge={examplesMenu.badge}
@@ -208,6 +115,4 @@ const Menu = () => {
       </nav>
     </Fragment>
   );
-};
-
-export default Menu;
+}

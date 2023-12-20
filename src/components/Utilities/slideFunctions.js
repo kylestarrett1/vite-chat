@@ -1,6 +1,9 @@
 const slideUp = (targetElement, duration = 300) => {
   if (!targetElement) return;
 
+  const { parentElement } = targetElement;
+  parentElement.classList.remove('open');
+
   targetElement.style.height = `${targetElement.offsetHeight}px`;
   targetElement.offsetHeight; // force repaint
   targetElement.style.overflow = 'hidden';
@@ -69,5 +72,11 @@ const slideDown = (targetElement, duration = 300) => {
     targetElement.style.display = 'none';
   };
 };
+
+// const slideToggle = (target, duration = 300) => {
+//   if (window.getComputedStyle(target).display === 'none')
+//     return slideDown(target, duration);
+//   return slideUp(target, duration);
+// };
 
 export { slideDown, slideUp };

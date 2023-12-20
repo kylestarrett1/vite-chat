@@ -3,20 +3,26 @@ import { slideUp, slideDown } from '../../../Utilities/slideFunctions';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const MenuItem = ({
+export default function MenuItem({
+  id,
   title,
   icon,
   badge,
   badgeColor,
   hasSubMenu,
   outerSubMenuItems,
-}) => {
+}) {
+  const subMenuListRef = useRef(null);
+  const subMenuListRefs = useRef({ subMenuListRef });
   const [subMenuIsOpen, setSubMenuIsOpen] = useState(false);
+
   const [innerSubMenuIsOpen, setInnerSubMenuIsOpen] = useState(false);
 
-  const subMenuListRef = useRef(null);
+  const targetElement = subMenuListRef.current;
 
-  const toggleSubMenu = () => {
+  const toggleSubMenu = (e) => {
+    e.stopPropagation();
+
     setSubMenuIsOpen(!subMenuIsOpen);
   };
 
@@ -26,11 +32,26 @@ const MenuItem = ({
   };
 
   const stopPropagation = (e) => {
-    e.stopPropagation(); // Stop propagation of the click event
+    e.stopPropagation();
   };
 
+  // useEffect(() => {
+  //   if (targetElement) {
+  //     if (subMenuIsOpen) {
+  //       slideDown(targetElement, 300);
+  //     } else {
+  //       slideUp(targetElement, 300);
+  //     }
+  //   }
+  // }, [subMenuIsOpen, targetElement]);
+
   useEffect(() => {
-    const targetElement = subMenuListRef.current;
+    Object.entries(subMenuListRefs.current).forEach(([refId, ref]) => {
+      if (refId !== id) {
+        console.log(ref);
+        // ref.current.className = 'sub-menu-list hide';
+      }
+    });
 
     if (targetElement) {
       if (subMenuIsOpen) {
@@ -39,7 +60,7 @@ const MenuItem = ({
         slideUp(targetElement, 300);
       }
     }
-  }, [subMenuIsOpen]);
+  }, [id, subMenuIsOpen, targetElement]);
 
   return (
     <Fragment>
@@ -124,6 +145,4 @@ const MenuItem = ({
       )}
     </Fragment>
   );
-};
-
-export default MenuItem;
+}
