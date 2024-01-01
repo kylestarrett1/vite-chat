@@ -4,7 +4,6 @@ import { slideUp, slideDown } from '../../../Utilities/slideFunctions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function MenuItem({
-  id,
   title,
   icon,
   badge,
@@ -13,7 +12,6 @@ export default function MenuItem({
   outerSubMenuItems,
 }) {
   const subMenuListRef = useRef(null);
-  const subMenuListRefs = useRef({ subMenuListRef });
   const [subMenuIsOpen, setSubMenuIsOpen] = useState(false);
 
   const [innerSubMenuIsOpen, setInnerSubMenuIsOpen] = useState(false);
@@ -46,13 +44,6 @@ export default function MenuItem({
   // }, [subMenuIsOpen, targetElement]);
 
   useEffect(() => {
-    Object.entries(subMenuListRefs.current).forEach(([refId, ref]) => {
-      if (refId !== id) {
-        console.log(ref);
-        // ref.current.className = 'sub-menu-list hide';
-      }
-    });
-
     if (targetElement) {
       if (subMenuIsOpen) {
         slideDown(targetElement, 300);
@@ -60,7 +51,7 @@ export default function MenuItem({
         slideUp(targetElement, 300);
       }
     }
-  }, [id, subMenuIsOpen, targetElement]);
+  }, [subMenuIsOpen, targetElement]);
 
   return (
     <Fragment>

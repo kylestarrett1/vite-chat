@@ -1,7 +1,6 @@
-import { Fragment } from 'react';
 import { useEffect } from 'react';
 import Login from './components/Login/Login';
-import Chat from './Components/Chat/Chat';
+// import Chat from './Components/Chat/Chat';
 
 const App = () => {
   useEffect(() => {
@@ -22,10 +21,10 @@ const App = () => {
   }, []);
 
   return (
-    <Fragment>
-      {/* <Login /> */}
-      <Chat />
-    </Fragment>
+    <>
+      <Login />
+      {/* <Chat /> */}
+    </>
   );
 };
 
