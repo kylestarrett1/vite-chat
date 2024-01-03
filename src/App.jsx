@@ -1,8 +1,11 @@
-import { useEffect } from 'react';
-import Login from './components/Login/Login';
-// import Chat from './Components/Chat/Chat';
+import { useEffect, useState } from 'react';
+import { AuthContext } from './components/Pages/Register/AuthContext';
+import Register from './components/Pages/Register/Register';
+import Chat from './Components/Chat/Chat';
 
 const App = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   useEffect(() => {
     document.body.classList.remove('is-preload');
 
@@ -22,8 +25,9 @@ const App = () => {
 
   return (
     <>
-      <Login />
-      {/* <Chat /> */}
+      <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
+        {isLoggedIn ? <Chat /> : <Register />}
+      </AuthContext.Provider>
     </>
   );
 };

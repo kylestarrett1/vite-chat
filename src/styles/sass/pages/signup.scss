@@ -1,5 +1,6 @@
 #wrapper {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -7,7 +8,7 @@
 }
 
 /* Form */
-#login-form-container {
+#signup-form-container {
   max-width: 24rem;
   width: 100%;
   padding: 2.4rem;
@@ -22,21 +23,35 @@
   box-shadow: 0 3.5rem 6rem -1.5rem rgba(0, 0, 0, 0.9);
 
   h1 {
+    font-family: 'Aleo', sans-serif;
     font-size: 2.4rem;
     font-weight: 500;
     line-height: 3.2rem;
-    letter-spacing: 0.1em;
+    letter-spacing: -1.41px;
     align-self: center;
     margin-bottom: 2.4rem;
+
+    span {
+      font-family: 'Varela', serif;
+      font-size: 1.2em;
+      font-weight: 400;
+      font-style: italic;
+    }
   }
 
-  .login-form {
+  .signup-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 100%;
 
     .user-box {
       position: relative;
+      width: 100%;
       display: flex;
       flex-direction: column;
+      align-self: flex-start;
 
       input {
         width: calc(100% - 2rem);
@@ -93,11 +108,11 @@
 
     .user-btn {
       display: flex;
-      // width: 50%;
+      width: 11rem;
       justify-content: center;
       align-items: center;
       position: relative;
-      margin: 4.8rem 0 2.4rem 1.2rem;
+      margin: 1.2rem 0;
 
       text-transform: uppercase;
       overflow: hidden;
@@ -108,14 +123,21 @@
       transition: 0.5s;
     }
 
-    .user-btn:last-child {
+    .user-btn-text {
       display: block;
       font-size: 2rem;
       font-weight: 500;
       font-family: inherit;
       padding: 1.2rem 2.4rem;
-      letter-spacing: 0.15em;
       color: #fff;
+    }
+
+    .user-btn-text.signup {
+      letter-spacing: 0.15em;
+    }
+
+    .user-btn-text.login {
+      letter-spacing: 0;
     }
 
     .user-btn:hover {
@@ -210,4 +232,36 @@
       }
     }
   }
+
+  .login-text {
+    display: inline;
+    font-size: 1.2rem;
+    font-weight: 400;
+    // letter-spacing: 0.1em;
+    margin-top: 0.4rem;
+    color: #fff;
+
+    .login-link {
+      margin-left: 0.2em;
+      color: #ab20fd;
+      text-decoration: none;
+      font-weight: 500;
+    }
+  }
+}
+
+.signup-confirmation {
+  font-size: 1.8rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  margin-top: 0.4rem;
+  color: #fff;
+}
+
+.error-message {
+  font-size: 1.8rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  margin-top: 0.4rem;
+  color: #fff;
 }
