@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { AuthContext } from './components/Pages/Register/AuthContext';
+import { AuthContext } from './components/Pages/Register/ContextStore';
 import Register from './components/Pages/Register/Register';
 import Chat from './Components/Chat/Chat';
 

@@ -1,12 +1,18 @@
-import { useState } from 'react';
+import { useState, useRef, useContext } from 'react';
+import { SignupContext } from './ContextStore';
 
 export default function Signup({ onToggle }) {
+  const { setIsSignedUp, setIsLoginForm } = useContext(SignupContext);
+
   const [formData, setFormData] = useState({
     username: '',
     email: '',
     password: '',
   });
 
+  const usernameRef = useRef(null);
+  const emailRef = useRef(null);
+  const passwordRef = useRef(null);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
 
@@ -35,6 +41,13 @@ export default function Signup({ onToggle }) {
       });
 
     setFormSubmitted(true);
+    usernameRef.current.value = '';
+    emailRef.current.value = '';
+    passwordRef.current.value = '';
+    setIsSignedUp(true);
+    setTimeout(() => {
+      setIsLoginForm(true);
+    }, 1000);
   };
 
   const handleInputChange = (e) => {
@@ -61,6 +74,7 @@ export default function Signup({ onToggle }) {
                 name="username"
                 onChange={handleInputChange}
                 autoComplete="off"
+                ref={usernameRef}
                 required
               />
               <label htmlFor="username" className="after-label">
@@ -75,6 +89,7 @@ export default function Signup({ onToggle }) {
                 name="email"
                 onChange={handleInputChange}
                 autoComplete="off"
+                ref={emailRef}
                 required
               />
               <label htmlFor="email" className="after-label">
@@ -89,6 +104,7 @@ export default function Signup({ onToggle }) {
                 name="password"
                 onChange={handleInputChange}
                 autoComplete="off"
+                ref={passwordRef}
                 required
               />
               <label htmlFor="password" className="after-label">
@@ -115,7 +131,9 @@ export default function Signup({ onToggle }) {
           <p className="error-message">{errorMessage}</p>
         ) : !errorMessage && formSubmitted ? (
           <div>
-            <h2 className="signup-confirmation">Success</h2>
+            <h2 className="signup-confirmation">
+              Signup successful! Redirecting to Login...
+            </h2>
           </div>
         ) : null}
       </div>

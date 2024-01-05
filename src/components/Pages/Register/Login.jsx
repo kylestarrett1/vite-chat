@@ -1,5 +1,5 @@
-import { useEffect, useState, useContext } from 'react';
-import { AuthContext } from './AuthContext';
+import { useEffect, useState, useRef, useContext } from 'react';
+import { AuthContext } from './ContextStore';
 
 export default function Login({ onToggle }) {
   const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
@@ -9,6 +9,9 @@ export default function Login({ onToggle }) {
     email: '',
     password: '',
   });
+
+  const emailRef = useRef(null);
+  const passwordRef = useRef(null);
 
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
@@ -24,9 +27,10 @@ export default function Login({ onToggle }) {
     })
       .then((response) => {
         if (response.status === 200) {
+          setIsLoggedIn(true);
           return response.text();
         } else {
-          throw new Error('User already exists');
+          throw new Error('The username or password is incorrect');
         }
       })
       .then((data) => {
@@ -38,9 +42,8 @@ export default function Login({ onToggle }) {
       });
 
     setFormSubmitted(true);
-    if (!isLoggedIn) {
-      setIsLoggedIn(true);
-    }
+    emailRef.current.value = '';
+    passwordRef.current.value = '';
   };
 
   const handleInputChange = (e) => {
@@ -71,6 +74,7 @@ export default function Login({ onToggle }) {
                 name="email"
                 onChange={handleInputChange}
                 autoComplete="off"
+                ref={emailRef}
                 required
               />
               <label htmlFor="email" className="after-label">
@@ -85,6 +89,7 @@ export default function Login({ onToggle }) {
                 name="password"
                 onChange={handleInputChange}
                 autoComplete="off"
+                ref={passwordRef}
                 required
               />
               <label htmlFor="password" className="after-label">
